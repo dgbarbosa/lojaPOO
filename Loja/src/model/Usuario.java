@@ -18,9 +18,11 @@ public class Usuario {
 	public void createUsuario() throws SQLException {
 		String sql = "CREATE TABLE Usuario ( "
 				   + "id serial CONSTRAINT key PRIMARY KEY,"
-				   + "nome varchar(30),  "
-				   + "sobrenome varchar(30)"
-				   + "cpf char(11));";
+				   + "senha varchar(30),"
+				   + "nome varchar(30),"
+				   + "sobrenome varchar(30),"
+				   + "cpf char(11)"
+				   + ");";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.execute();
 		ps.close();
