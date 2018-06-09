@@ -7,9 +7,6 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 
 	public static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(
-				   "jdbc:postgresql:ec2-23-21-129-50.compute-1.amazonaws.com:5432"
-				  ,"nexwwbukiiuymx"
-				  , "9df1b7ba03ebee67fa172d27192037664ad6991c78a6af4f3eef4f53f0d15e9e");
+		return DriverManager.getConnection("jdbc:postgresql://ec2-23-23-130-158.compute-1.amazonaws.com/ddkgokf80tmp8q?sslmode=require&user=vwqgclxfuhloqw&password=7fc9961709dc629dc0d6aee5ab6a84ebf71c66d18b18c11601aa951f9b502a8f");
 	}	
 }
