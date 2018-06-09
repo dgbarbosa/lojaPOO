@@ -3,18 +3,18 @@ package view;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import model.Cliente;
-import model.Produto;
-import model.Usuario;
-import model.Venda;
+import model.ClienteDao;
+import model.ProdutoDao;
+import model.UsuarioDao;
+import model.VendaDao;
 
 public class TelaUsuario {
 
 public static void main(String[] args) throws SQLException {
-	Usuario umodel = new Usuario();
-	Produto pmodel = new Produto();
-	Cliente cmodel = new Cliente();	
-	Venda	vmodel = new Venda();
+	UsuarioDao	umodel = new UsuarioDao();
+	ProdutoDao	pmodel = new ProdutoDao();
+	ClienteDao	cmodel = new ClienteDao();	
+	VendaDao	vmodel = new VendaDao();
 	
 //	umodel.createUsuario();
 //	pmodel.createProduto();

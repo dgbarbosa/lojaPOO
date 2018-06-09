@@ -1,20 +1,20 @@
 package controller;
 
 public class Usuario {
-	private int id;
+	private int user_id;
 	private String nome;
 	private String sobrenome;
 	private int cpf;
 	private String senha;
 	public Usuario(int id, String nome, String sobrenome, int cpf, String senha) {
-		this.id = id;
+		this.user_id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.cpf = cpf;
 		this.senha = senha;
 	}
 	public int getId() {
-		return id;
+		return user_id;
 	}
 	public String getNome() {
 		return nome;

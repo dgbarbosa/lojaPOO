@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 import factory.ConnectionFactory;
 
-public class Produto {
+public class ProdutoDao {
 	
 	private Connection conn;
 	
-	public Produto() throws SQLException {
+	public ProdutoDao() throws SQLException {
 		conn = ConnectionFactory.getConnection();
 	}
 	public void createProduto() throws SQLException {

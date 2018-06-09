@@ -6,10 +6,10 @@ import java.sql.SQLException;
 
 import factory.ConnectionFactory;
 
-public class Venda {
+public class VendaDao {
 	private Connection conn;
 	
-	public Venda() throws SQLException {
+	public VendaDao() throws SQLException {
 		conn = ConnectionFactory.getConnection();
 	}
 	public void createVenda() throws SQLException {

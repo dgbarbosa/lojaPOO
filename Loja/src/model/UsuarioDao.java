@@ -7,11 +7,11 @@ import java.sql.SQLException;
 
 import factory.ConnectionFactory;
 
-public class Usuario {
+public class UsuarioDao {
 
 	private Connection conn;
 	
-	public Usuario() throws SQLException {
+	public UsuarioDao() throws SQLException {
 		conn = ConnectionFactory.getConnection();
 	}
 	
