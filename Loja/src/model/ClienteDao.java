@@ -14,7 +14,7 @@ public class ClienteDao {
 	public ClienteDao() throws SQLException {
 		conn = ConnectionFactory.getConnection();
 	}
-	public void createCliente() throws SQLException {
+	public void createTable() throws SQLException {
 		String sql = "CREATE TABLE Cliente( "
 				   + "cliente_id 		serial PRIMARY KEY,"
 				   + "nome 				varchar(45),"
@@ -26,7 +26,7 @@ public class ClienteDao {
 		ps.execute();
 		ps.close();
 	}
-	public void dropCliente() throws SQLException {
+	public void drop() throws SQLException {
 		String sql = "DROP TABLE Cliente";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.execute();
@@ -38,19 +38,19 @@ public class ClienteDao {
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, c.getNome());
 		ps.setInt(2, c.getCpf());
-		ps.setString(2, c.getEndereco());
-		ps.setInt(2, c.getClienteUsuario_id());
+		ps.setString(3, c.getEndereco());
+		ps.setInt(4, c.getClienteUsuario_id());
 		ps.execute();
 		ps.close();
 	}
-	public void deletarCliente(int id) throws SQLException {
+	public void delete(int id) throws SQLException {
 		String sql = "DELETE from Cliente WHERE cliente_id=?;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, id);
 		ps.execute();
 		ps.close();
 	}
-	public void alterarNomeCliente(int id, String nome) throws SQLException {
+	public void updateNome(int id, String nome) throws SQLException {
 		String sql = "UPDATE Cliente SET nome=? WHERE user_id=?;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, nome);
@@ -58,7 +58,7 @@ public class ClienteDao {
 		ps.execute();
 		ps.close();
 	}
-	public Cliente listarUmCliente(int id) throws SQLException {
+	public Cliente select(int id) throws SQLException {
 		String sql = "SELECT * from Cliente WHERE user_id=?;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, id);
@@ -72,7 +72,7 @@ public class ClienteDao {
 				);
 	}
 	
-	public void listar() throws SQLException {
+	public void select() throws SQLException {
 		String sql = "SELECT * from Cliente;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();

@@ -13,6 +13,12 @@ public class Usuario {
 		this.cpf = cpf;
 		this.senha = senha;
 	}
+	public Usuario(int id, String nome, String sobrenome, int cpf) {
+		this.user_id = id;
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.cpf = cpf;
+	}
 	public int getId() {
 		return user_id;
 	}
