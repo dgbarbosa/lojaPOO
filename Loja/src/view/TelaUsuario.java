@@ -16,10 +16,10 @@ public static void main(String[] args) throws SQLException {
 	ClienteDao	cmodel = new ClienteDao();	
 	VendaDao	vmodel = new VendaDao();
 	
-//	umodel.createUsuario();
-//	pmodel.createProduto();
-//	cmodel.createCliente();
-//	vmodel.createVenda();
+	umodel.createTable();
+	pmodel.createProduto();
+	cmodel.createTable();
+	vmodel.createVenda();
 	System.out.println("Sucesso");
 }
 }

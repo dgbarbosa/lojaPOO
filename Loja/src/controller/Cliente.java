@@ -13,6 +13,12 @@ public class Cliente {
 		this.endereco = endereco;
 		this.clienteUsuario_id = user_id;		
 	}
+	public Cliente(String nome, int cpf, String endereco, int user_id) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.endereco = endereco;
+		this.clienteUsuario_id = user_id;		
+	}
 	public int getCliente_id() {
 		return cliente_id;
 	}
@@ -28,5 +34,6 @@ public class Cliente {
 	public int getClienteUsuario_id() {
 		return clienteUsuario_id;
 	}
+	
 
 }

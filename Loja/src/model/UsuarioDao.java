@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import controller.Cliente;
 import controller.Usuario;
 import factory.ConnectionFactory;
 

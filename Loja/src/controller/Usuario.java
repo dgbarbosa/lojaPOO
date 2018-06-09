@@ -13,6 +13,12 @@ public class Usuario {
 		this.cpf = cpf;
 		this.senha = senha;
 	}
+	public Usuario(String nome, String sobrenome, int cpf, String senha) {
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.cpf = cpf;
+		this.senha = senha;
+	}
 	public Usuario(int id, String nome, String sobrenome, int cpf) {
 		this.user_id = id;
 		this.nome = nome;
