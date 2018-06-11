@@ -22,7 +22,8 @@ public class UsuarioDao {
 				   + "senha 			varchar(30),"
 				   + "nome 				varchar(30),"
 				   + "sobrenome 		varchar(30),"
-				   + "cpf 				char(11)"
+				   + "cpf 				char(11),"
+				   + "tipoUsuario_id	integer	REFERENCES TipoUsuario"
 				   + ");";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.execute();
@@ -36,13 +37,14 @@ public class UsuarioDao {
 	}
 
 	public void insert(Usuario u) throws SQLException {
-		String sql = "INSERT INTO Usuario (senha, nome, sobrenome, cpf)"
-				   + "VALUES (?,?,?,?);";
+		String sql = "INSERT INTO Usuario (senha, nome, sobrenome, cpf, tipoUsuario_id)"
+				   + "VALUES (?,?,?,?,?);";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, u.getSenha());
 		ps.setString(2, u.getNome());
 		ps.setString(3, u.getSobrenome());
-		ps.setInt(4, u.getCpf());
+		ps.setString(4, u.getCpf());
+		ps.setInt(5, u.getIntUserType());
 		ps.execute();
 		ps.close();
 	}
@@ -71,11 +73,24 @@ public class UsuarioDao {
 				rs.getInt("user_id"),
 				rs.getString("nome"),
 				rs.getString("sobrenome"),
-				rs.getInt("cpf")
+				rs.getString("cpf")
+				);
+	}
+	public Usuario select(int cpf, String Senha) throws SQLException {
+		String sql = "SELECT cpf, senha, tipoUsuario_id from Usuario WHERE user_id=?;";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, cpf);
+		ps.setString(2, Senha);
+		ResultSet rs = ps.executeQuery();
+		ps.close();
+		return new Usuario(
+				rs.getString("cpf"),
+				rs.getString("senha"),
+				rs.getInt("tipoUsuario_id")
 				);
 	}
 	
-	public void select() throws SQLException {
+	public void selectAll() throws SQLException {
 		String sql = "SELECT user_id, nome, sobrenome, cpf from Usuario;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
@@ -83,7 +98,8 @@ public class UsuarioDao {
 			System.out.println(rs.getInt("user_id"));
 			System.out.println(rs.getString("nome"));
 			System.out.println(rs.getString("sobrenome"));
-			System.out.println(rs.getInt("cpf"));
+			System.out.println(rs.getInt("cpf")
+					);
 		}
 		ps.close();
 	}

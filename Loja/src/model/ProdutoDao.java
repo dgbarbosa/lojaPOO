@@ -13,12 +13,12 @@ public class ProdutoDao {
 	public ProdutoDao() throws SQLException {
 		conn = ConnectionFactory.getConnection();
 	}
-	public void createProduto() throws SQLException {
+	public void createTable() throws SQLException {
 		String sql = "CREATE TABLE Produto ( "
 				   + "prod_id 			serial PRIMARY KEY,"
-				   + "nome 				varchar(30),"
+				   + "nm_prod			varchar(30),"
 				   + "preco_unitario	float8,"
-				   + "qtd 				integer,"
+				   + "qtd_prod			integer,"
 				   + "prodUsuario_id	integer	REFERENCES Usuario"
 				   + ");";
 		PreparedStatement ps = conn.prepareStatement(sql);

@@ -3,17 +3,17 @@ package controller;
 public class Cliente {
 	private int cliente_id;
 	private String nome;
-	private int cpf;
+	private String cpf;
 	private String endereco;
 	private int clienteUsuario_id;
-	public Cliente(int id, String nome, int cpf, String endereco, int user_id) {
+	public Cliente(int id, String nome, String cpf, String endereco, int user_id) {
 		this.cliente_id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.clienteUsuario_id = user_id;		
 	}
-	public Cliente(String nome, int cpf, String endereco, int user_id) {
+	public Cliente(String nome, String cpf, String endereco, int user_id) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;
@@ -25,7 +25,7 @@ public class Cliente {
 	public String getNome() {
 		return nome;
 	}
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 	public String getEndereco() {

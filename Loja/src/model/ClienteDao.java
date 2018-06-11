@@ -17,9 +17,9 @@ public class ClienteDao {
 	public void createTable() throws SQLException {
 		String sql = "CREATE TABLE Cliente( "
 				   + "cliente_id 		serial PRIMARY KEY,"
-				   + "nome 				varchar(45),"
+				   + "nm_cliente		varchar(45),"
 				   + "cpf				char(11),"
-				   + "endereco			varchar(45),"
+				   + "nm_endereco		varchar(45),"
 				   + "clienteUsuario_id	integer	REFERENCES Usuario"
 				   + ");";
 		PreparedStatement ps = conn.prepareStatement(sql);
@@ -37,7 +37,7 @@ public class ClienteDao {
 				   + "VALUES (?,?,?,?);";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, c.getNome());
-		ps.setInt(2, c.getCpf());
+		ps.setString(2, c.getCpf());
 		ps.setString(3, c.getEndereco());
 		ps.setInt(4, c.getClienteUsuario_id());
 		ps.execute();
@@ -64,9 +64,10 @@ public class ClienteDao {
 		ps.setInt(1, id);
 		ResultSet rs = ps.executeQuery();
 		ps.close();
-		return new Cliente(rs.getInt("cliente_id"),
+		return new Cliente(
+				rs.getInt("cliente_id"),
 				rs.getString("nome"),
-				rs.getInt("cpf"),
+				rs.getString("cpf"),
 				rs.getString("endereco"),
 				rs.getInt("clienteUsuario_id")
 				);

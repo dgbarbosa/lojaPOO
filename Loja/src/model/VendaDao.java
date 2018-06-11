@@ -12,7 +12,7 @@ public class VendaDao {
 	public VendaDao() throws SQLException {
 		conn = ConnectionFactory.getConnection();
 	}
-	public void createVenda() throws SQLException {
+	public void createTable() throws SQLException {
 		String sql = "CREATE TABLE Venda( "
 				   + "venda_id			serial PRIMARY KEY,"
 				   + "qtd 				integer,"
