@@ -1,0 +1,12 @@
+LOJA POO
+
+loja de vendas de produtos
+
+itens de Desc.
+Usuario: login, senha, cpf
+ 
+Produto: nome, preco_unitario, qtd
+
+Cliente: nome, cpf, endereco
+
+Venda: produto_id, cliente_id, qtd, usuario_id
