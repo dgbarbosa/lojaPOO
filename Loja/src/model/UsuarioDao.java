@@ -4,12 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import controller.Usuario;
 import factory.ConnectionFactory;
 
 public class UsuarioDao {
 
+	private List<Usuario> usuarios = new ArrayList<>();
 	private Connection conn;
 	
 	public UsuarioDao() throws SQLException {
@@ -76,32 +79,44 @@ public class UsuarioDao {
 				rs.getString("cpf")
 				);
 	}
-	public Usuario select(int cpf, String Senha) throws SQLException {
-		String sql = "SELECT cpf, senha, tipoUsuario_id from Usuario WHERE user_id=?;";
+	public Usuario select(String cpf, String Senha) throws SQLException {
+		String sql = "SELECT user_id, nome, sobrenome,cpf, senha, tipoUsuario_id from Usuario WHERE cpf=? AND senhha=?;";
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setInt(1, cpf);
+		ps.setString(1, cpf);
 		ps.setString(2, Senha);
 		ResultSet rs = ps.executeQuery();
 		ps.close();
 		return new Usuario(
+				rs.getInt("user_id"),
+				rs.getString("nome"),
+				rs.getString("sobrenome"),
 				rs.getString("cpf"),
 				rs.getString("senha"),
 				rs.getInt("tipoUsuario_id")
 				);
 	}
 	
-	public void selectAll() throws SQLException {
+	public List<Usuario> selectAll() throws SQLException {
 		String sql = "SELECT user_id, nome, sobrenome, cpf from Usuario;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {
-			System.out.println(rs.getInt("user_id"));
-			System.out.println(rs.getString("nome"));
-			System.out.println(rs.getString("sobrenome"));
-			System.out.println(rs.getInt("cpf")
+//			System.out.println(rs.getInt("user_id"));
+//			System.out.println(rs.getString("nome"));
+//			System.out.println(rs.getString("sobrenome"));
+//			System.out.println(rs.getInt("cpf")
+			Usuario us = new Usuario(
+					rs.getInt("user_id"),
+					rs.getString("nome"),
+					rs.getString("sobrenome"),
+					rs.getString("cpf"),
+					rs.getString("senha"),
+					rs.getInt("tipoUsuario_id")
 					);
+			usuarios.add(us);
 		}
 		ps.close();
+		return usuarios;
 	}
 	
 	public void fechar() throws SQLException {
